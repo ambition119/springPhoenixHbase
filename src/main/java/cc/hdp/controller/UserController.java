@@ -1,5 +1,7 @@
 package cc.hdp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,4 +43,14 @@ public class UserController {
 			return mav;
 		}
 	}
+	
+	@RequestMapping("/list.do")
+	public ModelAndView list(String id,String name){
+		ModelAndView mav = new ModelAndView();
+		List<User> findAll = userService.findAll();	
+		mav.addObject("findAll", findAll);
+		mav.setViewName("list");
+		return mav;
+	}
+	
 }
